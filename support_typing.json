@@ -1,0 +1,112 @@
+{
+  "title": "タイピング支援",
+  "rules": [
+    {
+      "description": "日本語モードで文章を入力中に Shift+Space でアルファベットに変換 + 単語の前後に半角スペースを挿入",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "spacebar",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "f10"
+            },
+            {
+              "key_code": "return_or_enter"
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_option"
+              ]
+            },
+            {
+              "key_code": "spacebar"
+            },
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_option"
+              ]
+            },
+            {
+              "key_code": "spacebar"
+            },
+            {
+              "set_variable": {
+                "name": "is_alpha_converted",
+                "value": 1
+              }
+            }
+          ],
+          "to_delayed_action": {
+            "to_if_invoked": [
+              {
+                "set_variable": {
+                  "name": "is_alpha_converted",
+                  "value": 0
+                }
+              }
+            ]
+          },
+          "conditions": [
+            {
+              "type": "input_source_if",
+              "input_sources": [
+                {
+                  "language": "ja"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "spacebar"
+          },
+          "to_if_alone": [
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_option"
+              ]
+            },
+            {
+              "key_code": "delete_or_backspace"
+            },
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_option"
+              ]
+            },
+            {
+              "key_code": "spacebar"
+            },
+            {
+              "set_variable": {
+                "name": "is_alpha_converted",
+                "value": 0
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "is_alpha_converted",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "title": "操作支援",
+  "rules": [
+    {
+      "description": "slack 通知を一つクローズ",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "hyphen",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "osascript ~/.config/karabiner/assets/complex_modifications/close_notify.osa"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "slack 通知をすべてクローズ",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "hyphen",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "option",
+                "control"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "osascript ~/.config/karabiner/assets/complex_modifications/close_all_notify.osa"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "slack を開く",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "right_shift",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open -a '/Applications/Slack.app'"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
